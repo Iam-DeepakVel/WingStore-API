@@ -39,6 +39,7 @@ UserSchema.pre('save', async function(){
   this.password = await bcrypt.hash(this.password,salt)
 })
 
+//Can be used on instance 
 UserSchema.methods.comparePassword = async function(candidatePassword){
   const isValid = await bcrypt.compare(candidatePassword,this.password)
   return isValid
